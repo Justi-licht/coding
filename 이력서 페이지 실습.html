@@ -1,0 +1,177 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<style type="text/css">
+	.paint { color: blue; text-align:center;}
+</style>
+<title>테이블</title>
+</head>
+<body>
+	<table border="1" class="paint" align = "center">
+		<form name = "memberForm" >
+		
+			<tr>
+				<td rowspan="9" width="5"> 사진 </td>
+			</tr>
+			<tr>
+				 <td rowspan= "9" width="150"></td>
+			</tr>
+			
+			<tr>
+				 <td rowspan= "3" width = "5">성명</td>
+				 <td> 한글 </td>
+				 <td width = "100"> <input type= "text" name= "t_han_name" size="18" maxlength="6"></td>
+				 <td> 업무/지역 </td>
+				 <td colspan="3" align="left">
+					<select name="t_area">
+						<option value=""> 지역선택 </option>
+						<option value="d"> 대전 </option>
+						<option value="s"> 서울 </option>
+						<option value="b"> 부산 </option>
+						<option value="k"> 금산 </option>
+					</select>
+				 </td>
+			</tr>
+			
+			<tr>
+				 <td> 영문 </td>
+				 <td width = "100"> <input type="text" size="18" maxlength="10"></td>
+				 <td> 주민번호 </td>
+				 <td colspan="3">
+					<input type="text" name="t_jumin_1" size="10" 
+					  maxlength="10" title="주민번호 6자리"> - 
+					<input type="text" name= "t_jumin_2" size="10" 
+					  maxlength="10" title="주민번호 7자리">
+				</td>
+			</tr>
+			
+			<tr>
+				 <td> 한자 </td>
+				 <td width = "100"><input type="text" size="18" maxlength="10"></td>
+				 <td> 성별 </td>
+				 <td><input type="radio" value="f" name="t_mf"/>여
+					 <input type="radio" value="m" name="t_mf"/>남</td>
+				 <td> 연령 </td>
+				 <td><input type="text" name="t_age" size="3" maxlength="3"></td>
+			</tr>
+			
+			<tr>
+				 <td colspan="2" width = "100">집주소 <br />(거주시)</td>
+				 <td colspan="5"></td>
+			</tr>
+			<tr>
+				 <td colspan="2">전화번호<br />(휴대폰)</td>
+				 <td width = "160"><input type="text" name="t_num1" size="1"maxlength="3"> -
+					 <input type="text" name="t_num2" size="1" maxlength="4"> -
+					 <input type="text" name="t_num3" size="1" maxlength="4"></td>
+				 <td>e-mail</td>
+				 <td colspan="5"></td>
+			</tr>
+		</form>
+	</table>
+	
+	<table align = "center">
+		<tr>
+			<td>
+			<input type="button" onclick ="memberSave()" value="회원가입"/>
+			</td>
+		</tr>
+	</table>
+	
+	<script>
+		function memberSave(){
+		
+			var t_name = memberForm.t_han_name.value;
+			if(t_name == ""){
+				alert("이름을 입력하시오.");
+				memberForm.t_han_name.value.focus();
+				return; 
+			}
+			
+			var t_ju_1 = memberForm.t_jumin_1.value;
+			if(t_ju_1 == ""){
+				alert("주민번호 앞자리를 입력하시오.");
+				memberForm.t_jumin_1.focus();
+				return;
+			}else{
+				if(t_ju_1.length != 6){
+					alert("주민번호 앞자리 6자리를 입력하시오.");
+					memberForm.t_jumin_1.focus();
+					return;
+				}
+			}
+			
+			var t_ju_2 = memberForm.t_jumin_2.value;
+			if(t_ju_2 == ""){
+				alert("주민번호 뒷자리를 입력하시오.");
+				memberForm.t_jumin_2.focus();
+				return;
+			}else{
+				if(t_ju_2.length !=7){
+					alert("주민번호 뒷자리 7자리를 입력하시오.");
+					memberForm.t_jumin_2.focus();
+					return;
+				}
+			}
+
+			var t_gubun = memberForm.t_mf.value;
+			if(t_gubun == ""){
+				alert("성별을 선택 하시오.");
+				return;
+			}
+
+			var area = memberForm.t_area.value;
+			if(area == ""){
+				alert("지역을 선택하시오.");
+				return;
+			}
+
+			var t_n1 = memberForm.t_num1.value;
+			if(t_n1 == ""){
+				alert("휴대폰 번호를 입력하시오.");
+				memberForm.t_num1.focus();
+				return;
+			}
+			var t_n2 = memberForm.t_num2.value;
+			if(t_n2 == ""){
+				alert("휴대폰 번호를 입력하시오.");
+				memberForm.t_num2.focus();
+				return;
+			}
+			var t_n3 = memberForm.t_num3.value;
+			if(t_n3 == ""){
+				alert("휴대폰 번호를 입력하시오.");
+				memberForm.t_num3.focus();
+				return;
+			}
+		
+			var age = memberForm.t_age.value;
+			if(age < 1 || age > 99){
+				alert("나이 1세 이상, 99세 이하로 작성하시오.");
+				memberForm.t_age.value = "";
+				memberForm.t_age.focus();
+				return;
+			}
+			
+	/*		
+			if(age < 1){
+				alert("나이 1세 이상으로 작성하시오.");
+				memberForm.t_age.value = "";
+				memberForm.t_age.focus();
+				}else{
+					if(age > 99){
+						alert("나이 99세 이하로 작성하시오.");
+						memberForm.t_age.value = "";
+						memberForm.t_age.focus();
+					}
+					
+				}		
+
+	*/
+	
+		}
+	</script>
+</body>
+</html>
