@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="ko" xml:lang="ko">
+<head>
+<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+<style type="text/css">
+	.head1 { background-color:#0000FF; text-align:center;}
+	.foot1 { background-color:#0000FF; text-align:center;}
+	.body1 { background-color:#D8D8D8; text-align:center;}
+</style>
+<title>테이블</title>
+<script type="text/javascript">
+	function result(){
+		var kor = score.h_kor.value;
+		var eng = score.h_eng.value;
+		var math = score.h_math.value;
+		var total = Number(kor)+ Number(eng) + Number(math);
+		score.h_total.value = total;
+		score.h_avg.value = total / 3;
+		
+		kor = score.i_kor.value;
+		eng = score.i_eng.value;
+		math = score.i_math.value;
+		total = Number(kor)+ Number(eng) + Number(math);
+		score.i_total.value = total;
+		score.i_avg.value = total / 3;
+		
+		kor = score.l_kor.value;
+		eng = score.l_eng.value;
+		math = score.l_math.value;
+		total = Number(kor)+ Number(eng) + Number(math);
+		score.l_total.value = total;
+		score.l_avg.value = total / 3;
+		
+		var h_av = Number(score.h_avg.value);
+		var i_av = Number(score.i_avg.value);
+		var l_av = Number(score.l_avg.value);
+		
+		var rank = 1;
+		if(h_av < i_av) rank = ++rank;
+		if(h_av < l_av) rank = ++rank;
+		score.h_suk.value = rank;
+		
+		rank = 1;
+		if(i_av < h_av) rank = ++rank;
+		if(i_av < l_av) rank = ++rank;
+		score.i_suk.value = rank;
+		
+		rank = 1;
+		if(l_av < h_av) rank = ++rank;
+		if(l_av < i_av) rank = ++rank;
+		score.l_suk.value = rank;
+
+		if(h_av > 89){
+			score.h_lev.value = "수";
+		}else if(h_av > 79){
+			score.h_lev.value = "우";
+		}else if(h_av > 69){
+			score.h_lev.value = "미";
+		}else{
+			score.h_lev.value = "양";
+		}
+
+		if(i_av > 89){
+			score.i_lev.value = "수";
+		}else if(i_av > 79){
+			score.i_lev.value = "우";
+		}else if(i_av > 69){
+			score.i_lev.value = "미";
+		}else{
+			score.i_lev.value = "양";
+		}
+
+		if(l_av > 89){
+			score.l_lev.value = "수";
+		}else if(l_av > 79){
+			score.l_lev.value = "우";
+		}else if(l_av > 69){
+			score.l_lev.value = "미";
+		}else{
+			score.l_lev.value = "양";
+		}
+	}
+</script>
+</head>
+<body>
+	<form name = "score">
+	<table border="1" summary="성적 평균 및 석차 계산">
+		<colgroup>
+			<col width="17%" />
+			<col width="17%" />
+			<col width="17%" />
+			<col width="17%" />
+			<col width="7%" />
+			<col width="7%" />
+			<col width="5%" />
+			<col width="5%" />
+		</colgroup>
+		
+		<thead>
+		<tr class="head1">
+			<th scope="col">성명</th>
+			<th scope="col">국어</th>
+			<th scope="col">영어</th>
+			<th scope="col">수학</th>
+			<th scope="col">총점</th>
+			<th scope="col">평균</th>
+			<th scope="col">석차</th>
+			<th scope="col">등급</th>
+		</tr>
+		</thead>
+		
+		<tfoot class="foot1">
+			<tr>
+				<th>평균</th>
+				<td><input style= "text" name="t_kor" size="17%"></td>
+				<td><input style= "text" name="t_eng" size="17%"></td>
+				<td><input style= "text" name="t_math" size="17%"></td>
+				<td><input style= "text" name="t_total" size="7%"></td>
+				<td><input style= "text" name="t_avg" size="7%"></td>
+				<td><input style= "text" name="t_suk" size="5%"></td>
+				<td><input style= "text" name="t_lev" size="5%"></td>
+			</tr>
+			<tr>
+				<th colspan="8"><input type= "button" onclick="result()" value="계산"></th>
+			</tr>
+		</tfoot>
+		
+		<tbody class="body1">
+			<tr>
+				<th>홍길동</th>
+				<td><input style= "text" name="h_kor" size="17%"></td>
+				<td><input style= "text" name="h_eng" size="17%"></td>
+				<td><input style= "text" name="h_math" size="17%"></td>
+				<td><input style= "text" name="h_total" size="7%"></td>
+				<td><input style= "text" name="h_avg" size="7%"></td>
+				<td><input style= "text" name="h_suk" size="5%"></td>
+				<td><input style= "text" name="h_lev" size="5%"></td>
+			</tr>
+		
+			<tr>
+				<th>이순신</th>
+				<td><input style= "text" name="i_kor" size="17%"></td>
+				<td><input style= "text" name="i_eng" size="17%"></td>
+				<td><input style= "text" name="i_math" size="17%"></td>
+				<td><input style= "text" name="i_total" size="7%"></td>
+				<td><input style= "text" name="i_avg" size="7%"></td>
+				<td><input style= "text" name="i_suk" size="5%"></td>
+				<td><input style= "text" name="i_lev" size="5%"></td>
+			</tr>
+		
+			<tr>
+				<th>이상순</th>
+				<td><input style= "text" name="l_kor" size="17%"></td>
+				<td><input style= "text" name="l_eng" size="17%"></td>
+				<td><input style= "text" name="l_math" size="17%"></td>
+				<td><input style= "text" name="l_total" size="7%"></td>
+				<td><input style= "text" name="l_avg" size="7%"></td>
+				<td><input style= "text" name="l_suk" size="5%"></td>
+				<td><input style= "text" name="l_lev" size="5%"></td>
+			</tr>
+		</tbody>
+	</table>
+	</form>
+</body>
+</html>
